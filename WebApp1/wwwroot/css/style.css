@@ -507,14 +507,24 @@ header .toggle {
     display: none;
   }
 }
+header .dropdown-menu {
+  font-size: 0.95rem;
+  background-color: #292929;
+  opacity: 90%;
+}
+header .dropdown-menu .dropdown-item {
+  color: #FFFFFF;
+}
+header .dropdown-menu .dropdown-item:hover {
+  background-color: #202020;
+  color: #FA3150;
+}
 header .dropdown-toggle {
-  font-size: 20px;
-  color: #202020;
   padding: 10px;
   cursor: pointer;
 }
 header .dropdown-toggle:hover {
-  color: #000000;
+  color: #FA3150;
 }
 
 footer {

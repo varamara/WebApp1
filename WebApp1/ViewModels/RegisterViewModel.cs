@@ -22,12 +22,12 @@ namespace WebApp1.ViewModels
 
      
         [Display(Name = "Street name")]
-        public string StreetName { get; set; }
+        public string? StreetName { get; set; }
 
         [Display(Name = "Postal code")]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
         
         [Display(Name = "City")]
-        public string City { get; set; }
+        public string? City { get; set; }
     }
 }

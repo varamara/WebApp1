@@ -159,17 +159,30 @@ header {
         @include lg {
             display: none;
         }
+    }
 
+    .dropdown-menu {
+        font-size: 0.95rem;
+        background-color: $color-dark-2;
+        opacity: 90%;
+
+        .dropdown-item {
+            
+            color: $color-white;
+
+            &:hover {
+                background-color: $color-dark-1;
+                color: $color-theme-1;
+            }
+        }
     }
 
     .dropdown-toggle {
-        font-size: 20px;
-        color: $color-dark-1;
         padding: 10px;
         cursor: pointer;
 
         &:hover {
-            color: $color-dark-0;
+            color: $color-theme-1;
         }
     }
 }
