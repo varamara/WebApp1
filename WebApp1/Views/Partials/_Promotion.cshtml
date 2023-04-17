@@ -1,0 +1,53 @@
+﻿@model PromotionViewModel
+
+@{
+    var discover = discoverService.GetDiscovers();
+}
+
+
+<section class="promotion">
+    <div class="container">
+        <div class="collection-grid">
+            <div class="item-1">
+                @if (Model.PromotionItem_1 != null)
+                {
+                    <div class="grid">
+                        @foreach (var item in Model.PromotionItem_1)
+                        {
+                            <partial name="/Views/Partials/_GridCollectionItem.cshtml" model="item" />
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="discover">
+                <div class="collection-content">
+                    <div class="container">
+                        <div class="title">@discover?.Title</div>
+                        <div class="discount-percent">@discover?.DiscountPercent</div>
+                        <div class="ingress">@discover?.Ingress</div>
+                        <div class="text">@discover?.Text</div>
+
+                        @if (!string.IsNullOrEmpty(discover?.Button?.Url) && !string.IsNullOrEmpty(@discover?.Button?.Content))
+                        {
+                            <a href="@discover?.Button?.Url" class="btn-theme">@discover?.Button?.Content</a>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+                <div class="item-2">
+                @if (Model.PromotionItem_2 != null)
+                    {
+                        <div class="grid">
+                            @foreach (var item in Model.PromotionItem_2)
+                            {
+                                <partial name="/Views/Partials/_GridCollectionItem.cshtml" model="item" />
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+</section>

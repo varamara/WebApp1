@@ -1,0 +1,38 @@
+@import '../core/_colors.scss';
+@import '../core/_fonts.scss';
+@import'../core/_mixins.scss';
+
+.top-selling-highlights {
+
+    .collection-grid {
+        margin-top: 30px;
+        margin-bottom: 70px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 40px;
+
+        @include md {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include lg {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .body {
+
+            .title {
+                margin-top: 15px;
+            }
+            .description {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-family: $font-roboto;
+            font-size: 1rem;
+            }
+            .author {
+                font-size: 0.75rem;
+                color: $color-dark-4;
+            }
+        } 
+    }
+}
