@@ -389,6 +389,7 @@ header .logo {
   font-size: 27px;
   font-weight: 700;
   color: #202020;
+  text-decoration: none;
 }
 header .logo img {
   margin-right: 5px;

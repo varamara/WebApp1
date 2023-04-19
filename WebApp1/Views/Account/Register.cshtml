@@ -1,19 +1,9 @@
-﻿@model RegisterViewModel
-
+﻿
 @{
 
     ViewData ["Title"] = "Register new account";
 
 }
 
-
-<div class="d-flex justify-content-center">
-    <div class="col-6">
-        <form method="post" novalidate>
-            <div class="mb-3">
-                <label asp-for="FirstName" class = "form-label"></label>
-                <input asp-for="FirstName" class = "form-control" />
-            </div>
-        </form>
-    </div>
-</div>
+<partial name="/Views/Partials/_Breadcrumb.cshtml" />
+<partial name="/Views/Partials/Forms/_RegisterForm.cshtml" />
