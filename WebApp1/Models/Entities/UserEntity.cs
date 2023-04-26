@@ -23,7 +23,7 @@ namespace WebApp1.Models.Entities
             using var hmac = new HMACSHA512(SecurityKey);
             var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
 
-            for (int i = 0; 1 < hash.Length; i++)
+            for (int i = 0; i < hash.Length; i++)
             {
                 if (hash[i] != Password[i]) 
                     return false;

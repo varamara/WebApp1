@@ -1,5 +1,25 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
+    ViewData["Title"] = "Products";
+
+    var products = await productService.GetAllAsync();
+}
+
+Fixa viewmodel till detta index
+
+<partial name="/Views/Partials/_Breadcrumb.cshtml" />
+<div class="mb-5">
+    <a asp-controller="Products" asp-action="Register" class="m-2">Create Product</a>
+</div>
+
+@if (products != null) {
+    foreach (var product in products)
+    {
+        <div class="mb-3">
+            <div>@product.Id</div>
+            <div>@product.Name</div>
+            <div>@product.Description</div>
+            <div>@product.Price</div>
+        </div>
+    }
 }
