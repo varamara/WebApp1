@@ -11,14 +11,20 @@ public class ProductRegistrationViewModel
     public string Name { get; set; } = null!;
 
 
-    [Display(Name = "description (optional)")]
-    public string? Description { get; set; }
-
-
     [Required(ErrorMessage = "This field is required")]
     [Display(Name= "Product Price *")]
     [DataType(DataType.Currency)]
     public decimal Price { get; set; }
+
+    [Required(ErrorMessage = "This field is required")]
+    [Display(Name = "Category *")]
+    public string Category { get; set; } = null!;
+
+
+    [Display(Name = "In Stock")]
+    public string? InStock { get; set; }
+
+
 
 
 
@@ -27,8 +33,10 @@ public class ProductRegistrationViewModel
         return new ProductEntity
         {
             Name = productRegistrationViewModel.Name,
-            Description = productRegistrationViewModel.Description,
-            Price = productRegistrationViewModel.Price
+            Price = productRegistrationViewModel.Price,
+            Category = productRegistrationViewModel.Category,
+            InStock = productRegistrationViewModel.InStock
+            
         };
     }
 }

@@ -11,7 +11,7 @@ namespace WebApp1.Contexts
         }
 
         public DbSet<UserEntity> Users { get; set; }
-        //public DbSet<ProfileEntity> Profiles { get; set; }
-        //public DbSet<ProductEntity> Products { get; set; }
+        public DbSet<ProfileEntity> Profiles { get; set; }
+        public DbSet<ProductEntity> Products { get; set; }
     }
 }
