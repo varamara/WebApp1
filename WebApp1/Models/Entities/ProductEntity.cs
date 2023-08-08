@@ -4,7 +4,6 @@ namespace WebApp1.Models.Entities
 {
     public class ProductEntity
     {
-
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public Guid ArticleNumber { get; set; } = Guid.NewGuid(); 
@@ -13,10 +12,6 @@ namespace WebApp1.Models.Entities
         public decimal Price { get; set; }
         public string? Category { get; set; }
         public string? InStock { get; set; }
-
-       
-
-
 
         public static implicit operator ProductModel(ProductEntity entity)
         {

@@ -1,0 +1,59 @@
+﻿@{
+
+    var products = await productService.GetAllAsync();
+}
+
+
+
+@*Behövs det en if sats runt hela?
+Hur gör man så att det bara syns 10 produkter och att load more laddar fler?*@
+
+
+@if (products != null)
+{
+
+    <section class="products">
+        <div class="container">
+            <nav class="header">
+                <div class="products-title">
+                    PRODUCTS
+                </div>
+                <a asp-controller="Products" asp-action="Register" class="link"><i class="fa-solid fa-plus"></i>CREATE PRODUCT</a>
+            </nav>
+            <div class="products-grid">
+
+                <!-- category-item start -->
+                <div class="grid-categories">
+                    <div class="category">Id</div>
+                    <div class="category">Name</div>
+                    <div class="category">ArticleNumber</div>
+                    <div class="category">Price</div>
+                    <div class="category">Category</div>
+                    <div class="category">In stock</div>
+                </div>
+                <!-- category-item end -->
+
+                <!-- collection-item start -->
+                    @foreach (var product in products)
+                    {
+                        <div class="grid-item">
+                            <div class="info">@product.Id</div>
+                            <div class="info">@product.Name</div>
+                            <div class="info">@product.ArticleNumber</div>
+                            <div class="info">@product.Price</div>
+                            <div class="info">@product.Category</div>
+                            <div class="info">@product.InStock</div>
+                        </div>
+                    }
+                <!-- collection-item end -->
+
+
+                <div class="load-more">
+                    <button class="btn-outline-white">LOAD MORE <i class="fa-solid fa-rotate-right"></i></button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+}

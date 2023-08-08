@@ -8,14 +8,12 @@ namespace WebApp1.Controllers
     {
         public IActionResult Index(int id)
         {
-
             var viewModel = new ProductDetailsIndexViewModel
             {
                 ProductDetails = new ProductDetailsViewModel
                 {
 
                 }
-
             };
 
             return View(viewModel);

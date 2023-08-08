@@ -4,7 +4,6 @@ namespace WebApp1.Services;
 
 public class ShowcaseService
 {
-   
     private readonly List<ShowcaseModel> _showcases = new() { 
 
         new ShowcaseModel()
@@ -30,8 +29,7 @@ public class ShowcaseService
                 Url = "/products",
             }
         }
-    };
-    
+    }; 
 
     public ShowcaseModel GetLatest()
     {

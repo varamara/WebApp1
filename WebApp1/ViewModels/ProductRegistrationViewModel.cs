@@ -25,9 +25,6 @@ public class ProductRegistrationViewModel
     public string? InStock { get; set; }
 
 
-
-
-
     public static implicit operator ProductEntity(ProductRegistrationViewModel productRegistrationViewModel)
     {
         return new ProductEntity

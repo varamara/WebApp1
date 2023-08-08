@@ -1,0 +1,89 @@
+@import '../core/_colors.scss';
+@import '../core/_fonts.scss';
+@import'../core/_mixins.scss';
+
+.products {
+
+
+    .container {
+
+
+
+        .header {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            font-family: $font-roboto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .products-title {
+                border-bottom: 1px solid $color-dark-4;
+                margin-left: 20px;
+                font-size: 2rem;
+                font-weight: $font-weight-bold;
+                color: $color-dark-1;
+            }
+
+            a {
+                color: $color-white;
+                background-color: $color-theme-1;
+                padding: 10px;
+                text-decoration: none;
+                transition: all 0.25s ease-in-out;
+
+                &:hover {
+                    background-color: $color-dark-3;
+                }
+            }
+
+            i {
+                margin: 5px;
+            }
+        }
+
+        .products-grid {
+            margin-bottom: 100px;
+            background-color: #f6f6f6;
+            display: grid;
+            grid-template-columns: repeat(5);
+            border: 1px solid $color-dark-5;
+
+            .grid-categories {
+                background-color: $color-theme-1;
+                color: $color-white;
+                font-family: $font-roboto;
+                font-size: 1.2rem;
+                font-weight: $font-weight-medium;
+                justify-content: space-evenly;
+                align-items: center;
+                display: flex;
+                height: 50px;
+
+
+                .category {
+                    flex-basis: 7%;
+                }
+            }
+
+            .grid-item {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                border: 1px solid $color-dark-5;
+
+                .info {
+                    flex-basis: 7%;
+                }
+            }
+
+            .load-more {
+                margin: 40px;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}

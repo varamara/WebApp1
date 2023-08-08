@@ -13,16 +13,12 @@ namespace WebApp1.Controllers
             _productService = productService;
         }
 
-
-
         public IActionResult Index()
         {
             ViewData["Title"] = "Products";
 
             return View();
         }
-
-
 
         public IActionResult Register()
         {
@@ -44,13 +40,10 @@ namespace WebApp1.Controllers
             return View();
         }
 
-
-
         public IActionResult Search()
         {
             ViewData["Title"] = "Search for Products";
             return View();
         }
-
     }
 }

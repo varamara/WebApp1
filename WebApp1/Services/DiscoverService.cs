@@ -4,7 +4,6 @@ namespace WebApp1.Services;
 
 public class DiscoverService
 {
-
     private readonly List<DiscoverModel> _discovers = new() {
 
         new DiscoverModel()

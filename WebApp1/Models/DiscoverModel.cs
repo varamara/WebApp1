@@ -8,5 +8,4 @@
         public string? Text { get; set; }
         public LinkButtonModel? Button { get; set; }
     }
-
 }

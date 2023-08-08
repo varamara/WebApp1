@@ -14,7 +14,6 @@ public class ProductService
         _context = context;
     }
 
-
     //Create Product
     public async Task<bool> CreateAsync(ProductRegistrationViewModel productRegistrationViewModel)
     {
@@ -46,12 +45,8 @@ public class ProductService
         return products;       
     }
 
-
-
     internal static object GetProductById(int id)
     {
         throw new NotImplementedException();
     }
-
-    
 }

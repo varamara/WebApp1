@@ -1,71 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebApp1.Services;
 using WebApp1.ViewModels;
 
-namespace WebApp1.Controllers;
-
-public class AccountController : Controller
+namespace WebApp1.Controllers
 {
-    private readonly UserService _userService;
-
-    public AccountController(UserService userService)
+    [Authorize]
+    public class AccountController : Controller
     {
-        _userService = userService;
-    }
-
-
-    public IActionResult Register()
-    {
-        ViewData["Title"] = "Register";
-
-        return View();
-    }
-    [HttpPost]
-    public async Task<IActionResult> Register(RegisterViewModel registerViewModel)
-    {
-       
-        if (ModelState.IsValid)
+        public IActionResult Index()
         {
-            if (await _userService.UserExists(x => x.Email == registerViewModel.Email))
-            {
-                ModelState.AddModelError("", "A user with that email address already exists.");
-            }
-            else
-            {
-                if (await _userService.RegisterAsync(registerViewModel))
-                    return RedirectToAction("Index", "Home");
-                else
-                    ModelState.AddModelError("", "Something went wrong.");
-            } 
+            ViewData["Title"] = "Account";
+            return View();
         }
-
-        return View(registerViewModel);
     }
-
-    public IActionResult Login()
-    {
-        ViewData["Title"] = "Login";
-
-        return View();
-    }
-    [HttpPost]
-    public async Task<IActionResult> Login(LoginViewModel loginViewModel)
-    {
-        if (ModelState.IsValid)
-        {
-            if(await _userService.LoginAsync(loginViewModel))
-                return RedirectToAction("Index", "Account");
-            
-            ModelState.AddModelError("", "Invalid email or password");
-        }
-        
-        return View(loginViewModel);
-    }
-
-    public IActionResult Index()
-    {
-        ViewData["Title"] = "Account";
-        return View();
-    }
-
 }

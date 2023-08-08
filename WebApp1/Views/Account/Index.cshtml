@@ -1,3 +1,9 @@
-﻿@{
-	ViewData["Title"] = "My Account";
+﻿
+@{
+	ViewData["Title"] = User.FindFirst("DisplayName")?.Value;
 }
+
+<partial name="/Views/Partials/_Breadcrumb.cshtml" />
+<div>
+	@ViewData["Title"] 
+</div>

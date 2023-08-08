@@ -3,6 +3,6 @@
     public class ProductsIndexViewModel
     {
         public string Title { get; set; } = "Products";
-         
+
     }
 }

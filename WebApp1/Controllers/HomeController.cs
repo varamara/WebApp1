@@ -37,8 +37,6 @@ namespace WebApp1.Controllers
                         new GridCollectionItemViewModel { Id = "2" , Title = "Table Lamp - scelerisque tempore", Price = 30, ImageUrl = "images/placeholders/369x310.svg" },
                     }
                 },
-
-
             };
 
             return View(viewModel);

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WebApp1.Models.Identity;
 
 namespace WebApp1.Models.Entities
 {
@@ -12,10 +13,8 @@ namespace WebApp1.Models.Entities
         public string? StreetName { get; set; }
         public string? PostalCode { get; set; }
         public string? City { get; set; }
-
-
-        
-        public UserEntity User { get; set; } = null!;
+ 
+        public AppUser User { get; set; } = null!;
 
     }
 }
