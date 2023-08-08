@@ -28,7 +28,14 @@ namespace WebApp1.Services
 
         public async Task<bool> RegisterUserAsync(RegisterViewModel viewModel)
         {
-            AppUser appUser = viewModel;
+            var appUser = new AppUser
+            {
+                UserName = viewModel.Email,
+                Email = viewModel.Email,
+                FirstName = viewModel.FirstName,
+                LastName = viewModel.LastName
+            };
+
             var roleName = "user";
 
             if (!await _roleManager.Roles.AnyAsync())

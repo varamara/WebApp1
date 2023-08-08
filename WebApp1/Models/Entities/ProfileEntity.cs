@@ -13,8 +13,8 @@ namespace WebApp1.Models.Entities
         public string? StreetName { get; set; }
         public string? PostalCode { get; set; }
         public string? City { get; set; }
- 
-        public AppUser User { get; set; } = null!;
+
+        public UserEntity User { get; set; } = null!;
 
     }
 }

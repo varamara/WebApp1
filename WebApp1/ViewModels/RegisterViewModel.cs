@@ -75,26 +75,33 @@ public class RegisterViewModel
     public bool TermsAndConditions { get; set; } = false;
 
 
-    public static implicit operator AppUser(RegisterViewModel viewModel)
+    
+    public static implicit operator UserEntity(RegisterViewModel registerViewModel)
     {
-        return new Models.Identity.AppUser
+        var userEntity = new UserEntity() { Email = registerViewModel.Email };
+        userEntity.GenerateSecurepassword(registerViewModel.Password);
+        return userEntity;  
+    }
+
+    public static implicit operator ProfileEntity(RegisterViewModel registerViewModel)
+    {
+        return new ProfileEntity
         {
-            UserName = viewModel.Email,
-            FirstName = viewModel.FirstName,
-            LastName = viewModel.LastName,
-            Email = viewModel.Email,
-            PhoneNumber = viewModel.Mobile,
-            CompanyName = viewModel.Company,
+            FirstName = registerViewModel.FirstName,
+            LastName = registerViewModel.LastName,
+            StreetName = registerViewModel.StreetName,
+            PostalCode = registerViewModel.PostalCode,
+            City = registerViewModel.City,
         };
     }
 
-    public static implicit operator AddressEntity(RegisterViewModel viewModel)
+    public static implicit operator AddressEntity(RegisterViewModel registerViewModel)
     {
         return new AddressEntity
         {
-            StreetName = viewModel.StreetName,
-            PostalCode = viewModel.PostalCode,
-            City = viewModel.City,
+            StreetName = registerViewModel.StreetName,
+            PostalCode = registerViewModel.PostalCode,
+            City = registerViewModel.City,
         };
     }
 

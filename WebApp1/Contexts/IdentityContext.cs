@@ -8,8 +8,6 @@ namespace WebApp1.Contexts
 {
     public class IdentityContext : IdentityDbContext<AppUser>
     {
-    
-
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
         {
 
