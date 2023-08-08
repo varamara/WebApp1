@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApp1.Contexts;
 
@@ -11,9 +12,11 @@ using WebApp1.Contexts;
 namespace WebApp1.Migrations.Identity
 {
     [DbContext(typeof(IdentityContext))]
-    partial class IdentityContextModelSnapshot : ModelSnapshot
+    [Migration("20230808081108_Updated products database")]
+    partial class Updatedproductsdatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -204,16 +207,6 @@ namespace WebApp1.Migrations.Identity
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = " blalala ",
-                            ImageUrl = "https://cf-images.dustin.eu/cdn-cgi/image/format=auto,quality=75,width=640,,fit=contain//image/d200001001725842/logitech-mk540-advanced-nordiska-l%C3%A4underna-sats-med-tangentbord-och-mus.jpg",
-                            Price = 500m,
-                            Title = "Logitech MK549 Advanced"
-                        });
                 });
 
             modelBuilder.Entity("WebApp1.Models.Entities.ProductTagEntity", b =>
@@ -229,13 +222,6 @@ namespace WebApp1.Migrations.Identity
                     b.HasIndex("TagId");
 
                     b.ToTable("ProductTags");
-
-                    b.HasData(
-                        new
-                        {
-                            ProductId = 1,
-                            TagId = 1
-                        });
                 });
 
             modelBuilder.Entity("WebApp1.Models.Entities.TagEntity", b =>

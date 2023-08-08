@@ -8,41 +8,49 @@ namespace WebApp1.Services;
 
 public class ProductService
 {
-    private readonly DataContext _context;
-    public ProductService(DataContext context)
+    private readonly IdentityContext _context;
+    public ProductService(IdentityContext context)
     {
         _context = context;
     }
 
-    //Create Product
-    public async Task<bool> CreateAsync(ProductRegistrationViewModel productRegistrationViewModel)
+    public ProductEntity ToProductEntity(ProductRegistrationViewModel viewModel)
     {
-        try
+        return new ProductEntity
         {
-           ProductEntity productEntity = productRegistrationViewModel;
-
-            _context.Products.Add(productEntity);
-            await _context.SaveChangesAsync();
-            return true;
-        } 
-        catch
-        {
-            return false;
-        }
+            Title = viewModel.Title,
+            Description = viewModel.Description,
+            ImageUrl = viewModel.ImageUrl,
+            Price = viewModel.Price,
+            ProductTags = viewModel.SelectedTagIds.Select(tagId => new ProductTagEntity { TagId = tagId }).ToList()
+        };
     }
 
-    //Get Product
-    public async Task<IEnumerable<ProductModel>> GetAllAsync()
+    public List<TagEntity> GetAvailableTags()
     {
-        var products = new List<ProductModel>();
+        return _context.Tags.ToList();
+    }
+
+    public async Task<bool> RegisterProductAsync(ProductEntity productEntity)
+    {
+        _context.Products.Add(productEntity);
+        int result = await _context.SaveChangesAsync();
+        return result > 0;
+    }
+
+
+    //Get Product
+    public async Task<IEnumerable<ProductEntity>> GetAllAsync()
+    {
+        var productEntity = new List<ProductEntity>();
         var items = await _context.Products.ToListAsync();
 
         foreach (var item in items)
         {
-            ProductModel productModel = item;
-            products.Add(productModel);
+            ProductEntity productModel = item;
+            productEntity.Add(productModel);
         }
-        return products;       
+        return productEntity;
     }
 
     internal static object GetProductById(int id)
