@@ -31,7 +31,6 @@ namespace WebApp1.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Convert ViewModel to ProductEntity with selected tags
                 ProductEntity productEntity = _productService.ToProductEntity(productRegistrationViewModel);
 
                 if (await _productService.RegisterProductAsync(productEntity))
@@ -40,28 +39,10 @@ namespace WebApp1.Controllers
                 ModelState.AddModelError("", "Something went wrong when creating product");
             }
 
-            // Get available tags from the service
-            var availableTags = _productService.GetAvailableTags();
-
-            // Get the three hard-coded tags from the OnModelCreating method
-            var hardCodedTagNames = new List<string> { "new", "Featured", "Popular" };
-
-            // Find the database tags that match the hard-coded tag names
-            var matchingDatabaseTags = availableTags.Where(tag => hardCodedTagNames.Contains(tag.TagName)).ToList();
-
-            // Create a list of TagEntity instances that match the database tags
-            var matchingDatabaseTagEntities = matchingDatabaseTags.Select(tag => new TagEntity { Id = tag.Id, TagName = tag.TagName }).ToList();
-
-            // Assign matched database tag entities to the view model
-            productRegistrationViewModel.AvailableTags = matchingDatabaseTagEntities;
-
             return View(productRegistrationViewModel);
-
-     
         }
 
-
-
+        //Hur får jag produkten att bli tilldelad ett tagId?!
 
         public IActionResult Search()
         {
