@@ -6,8 +6,7 @@ namespace WebApp1.Repositories
 {
     public class ProductRepository : Repository<ProductEntity>
     {
-        private readonly IdentityContext _context;
-        public ProductRepository(IdentityContext context) : base(context)
+        public ProductRepository(IdentityDataContext context) : base(context)
         {
         }
     }

@@ -5,7 +5,7 @@ namespace WebApp1.Repositories
 {
     public class ProductTagRepository : Repository<ProductTagEntity>
     {
-        public ProductTagRepository(IdentityContext context) : base(context)
+        public ProductTagRepository(IdentityDataContext context) : base(context)
         {
         }
     }

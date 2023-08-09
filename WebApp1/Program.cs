@@ -11,8 +11,8 @@ builder.Services.AddControllersWithViews();
 
 // contexts
 
-builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
-builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
+builder.Services.AddDbContext<IdentityDataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
+//builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
 
 // repositories
 
@@ -32,7 +32,7 @@ builder.Services.AddScoped<DiscoverService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<ShowcaseService>();
 builder.Services.AddScoped<UserAdminService>();
-builder.Services.AddScoped<UserService>();
+//builder.Services.AddScoped<UserService>();
 
 builder.Services.AddScoped<CustomClaimsPrincipalFactory>();
 
@@ -43,7 +43,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
     x.User.RequireUniqueEmail = true;
 
 })
-    .AddEntityFrameworkStores<IdentityContext>()
+    .AddEntityFrameworkStores<IdentityDataContext>()
     .AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
 
 builder.Services.ConfigureApplicationCookie(x =>

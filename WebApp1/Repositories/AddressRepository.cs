@@ -5,7 +5,7 @@ namespace WebApp1.Repositories
 {
     public class AddressRepository : Repository<AddressEntity>
     {
-        public AddressRepository(IdentityContext context) : base(context)
+        public AddressRepository(IdentityDataContext context) : base(context)
         {
         }
     }

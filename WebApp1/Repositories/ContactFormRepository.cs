@@ -5,7 +5,7 @@ namespace WebApp1.Repositories
 {
     public class ContactFormRepository : Repository<ContactFormEntity>
     {
-        public ContactFormRepository(IdentityContext context) : base(context)
+        public ContactFormRepository(IdentityDataContext context) : base(context)
         {
         }
     }

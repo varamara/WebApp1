@@ -10,19 +10,23 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="mb-3">
-                    <label asp-for="Title"></label>
-                    <input asp-for="Title" class="form-control" rows="2" />
-                    <small><span asp-validation-for="Title" class="text-danger"></span></small>
+                    <label asp-for="ProductName"></label>
+                    <input asp-for="ProductName" class="form-control" rows="2" />
+                    <small><span asp-validation-for="ProductName" class="text-danger"></span></small>
                 </div>
 
 
                 <div class="mb-3">
-                    <label asp-for="Description"></label>
-                    <input asp-for="Description" class="form-control" rows="4" />
-                    <small><span asp-validation-for="Description"></span></small>
+                    <label asp-for="ProductDescription"></label>
+                    <input asp-for="ProductDescription" class="form-control" rows="4" />
+                    <small><span asp-validation-for="ProductDescription"></span></small>
                 </div>
 
-              
+                <div class="mb-3">
+                    <label asp-for="ProductPrice"></label>
+                    <textarea asp-for="ProductPrice" class="form-control"></textarea>
+                    <small><span asp-validation-for="ProductPrice" class="text-danger"></span></small>
+                </div>
                
                 <div class="mb-3 ImageUrl form-group">
                     <label asp-for="ImageUrl"></label>
@@ -30,11 +34,7 @@
                     <small><span asp-validation-for="ImageUrl"></span></small>
                 </div>
 
-                <div class="mb-3">
-                    <label asp-for="Price"></label>
-                    <textarea asp-for="Price" class="form-control"></textarea>
-                    <small><span asp-validation-for="Price" class="text-danger"></span></small>
-                </div>
+            
 
                 <div class="grid mt-2">
                     <button type="submit" class="btn btn-success">CREATE</button>

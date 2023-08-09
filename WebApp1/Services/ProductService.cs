@@ -8,23 +8,23 @@ namespace WebApp1.Services;
 
 public class ProductService
 {
-    private readonly IdentityContext _context;
-    public ProductService(IdentityContext context)
+    private readonly IdentityDataContext _context;
+    public ProductService(IdentityDataContext context)
     {
         _context = context;
     }
 
-    public ProductEntity ToProductEntity(ProductRegistrationViewModel viewModel)
-    {
-        return new ProductEntity
-        {
-            Title = viewModel.Title,
-            Description = viewModel.Description,
-            ImageUrl = viewModel.ImageUrl,
-            Price = viewModel.Price,
-            ProductTags = viewModel.SelectedTagIds.Select(tagId => new ProductTagEntity { TagId = tagId }).ToList()
-        };
-    }
+    //public ProductEntity ToProductEntity(ProductRegistrationViewModel viewModel)
+    //{
+    //    return new ProductEntity
+    //    {
+    //        Title = viewModel.Title,
+    //        Description = viewModel.Description,
+    //        ImageUrl = viewModel.ImageUrl,
+    //        Price = viewModel.Price,
+    //        ProductTags = viewModel.SelectedTagIds.Select(tagId => new ProductTagEntity { TagId = tagId }).ToList()
+    //    };
+    //}
 
     public List<TagEntity> GetAvailableTags()
     {

@@ -8,18 +8,23 @@ public class ProductRegistrationViewModel
 
     [Required(ErrorMessage = "This field is required")]
     [Display(Name = "Product Title *")]
-    public string Title { get; set; } = null!;
+    public string ProductName { get; set; } = null!;
 
-    [Display(Name = "Description *")]
-    public string? Description { get; set; }
-
-    [Display(Name = "Image URL")]
-    public string? ImageUrl { get; set; }
+    [Display(Name = "Description")]
+    public string? ProductDescription { get; set; }
 
     [Required(ErrorMessage = "This field is required")]
     [Display(Name = "Product Price *")]
     [DataType(DataType.Currency)]
-    public decimal Price { get; set; }
+    public decimal ProductPrice { get; set; }
+
+    [Display(Name = "Product Category *")]
+    public int ProductCategoryId { get; set; }
+
+    [Display(Name = "Image URL")]
+    public string? ProductImage { get; set; }
+
+  
 
     public List<TagEntity> AvailableTags { get; set; } = new List<TagEntity>();
     public List<int> SelectedTagIds { get; set; } = new List<int>();

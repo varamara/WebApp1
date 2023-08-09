@@ -1,17 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static WebApp1.Models.Entities.ProductEntity;
 
 namespace WebApp1.Models.Entities;
 
 public class ProductEntity
 {
-    public int Id { get; set; }
-    public string Title { get; set; } = null!;
-    public string? Description { get; set; }
-    public string? ImageUrl { get; set; }
+    [Key]
+    public string ArticleNumber { get; set; } = null!;
+    public string ProductName { get; set; } = null!;
+    public string? ProductDescription { get; set; }
 
     [Column(TypeName = "money")]
-    public decimal Price { get; set; }
-
-    public ICollection<ProductTagEntity> ProductTags { get; set; } = new HashSet<ProductTagEntity>();
+    public decimal ProductPrice { get; set; }
+    public int ProductCategoryId { get; set; }
+    public string? ProductImage { get; set; }
+    public ProductCategoryEntity ProductCategory { get; set; } = null!;
+    public ICollection<ProductTagEntity> productTags { get; set; } = new HashSet<ProductTagEntity>();
 }
