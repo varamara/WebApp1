@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using System.Linq.Expressions;
 using WebApp1.Contexts;
 
@@ -16,39 +17,61 @@ namespace WebApp1.Repositories
         //Create
         public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
-            _context.Set<TEntity>().Add(entity);
-            await _context.SaveChangesAsync();
-            return entity;
+            try
+            {
+                _context.Set<TEntity>().Add(entity);
+                await _context.SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            return null!;
+        }
+
+        //Update
+        public virtual async Task<TEntity> UpdateAsync(TEntity entity)
+        {
+            try
+            {
+                _context.Set<TEntity>().Add(entity);
+                await _context.SaveChangesAsync();
+                return entity;
+
+            }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            return null!;
         }
 
         //Get one
         public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> expression)
         {
-            var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(expression);
-            if (entity != null) 
-                return entity;
-
+            try
+            {
+                var entity = await _context.Set<TEntity>().FirstOrDefaultAsync(expression);
+                if (entity != null) 
+                    return entity;
+            }
+            catch(Exception ex) { Debug.WriteLine(ex.Message); }
             return null!;
         }
 
         //Get a list of
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await _context.Set<TEntity>().ToListAsync();
+            try
+            {
+                var entities = await _context.Set<TEntity>().ToListAsync();
+                if (entities != null)
+                    return entities;
+            }
+            catch (Exception ex) { Debug.WriteLine(ex.Message); }
+            return null!;
         }
+
 
         //Get all from a certain category for example
-        public virtual async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> expression)
+        public virtual async Task<IEnumerable<TEntity>> GetAllWhereAsync(Expression<Func<TEntity, bool>> expression)
         {
             return await _context.Set<TEntity>().Where(expression).ToListAsync();
-        }
-
-        //Update new entity
-        public virtual async Task<TEntity> UpdateAsync(TEntity entity) 
-        {
-            _context.Set<TEntity>().Update(entity);
-            await _context.SaveChangesAsync();
-            return entity;  
         }
 
         //Delete

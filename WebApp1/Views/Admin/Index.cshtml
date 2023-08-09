@@ -1,4 +1,5 @@
 ﻿
+@inject UserAdminService userAdminService
 
 @{
     ViewData["Title"] = "Backoffice";
@@ -6,5 +7,21 @@
 
 <partial name="/Views/Partials/_Breadcrumb.cshtml" />
 
-<div>Backoffice</div>
+<section class="admin-profile">
+    <div class="container">
+        @foreach (var user in await userAdminService.GetUsersAsync())
+        {
+            <div class="user">
+                <div class="name">@user.FirstName @user.LastName</div>
+                <div class="email">@user.Email</div>
+                <div class="roles">
+                    @foreach (var roleName in user.RoleNames)
+                    {
+                        <span>@roleName</span>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</section>
 

@@ -9,18 +9,30 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+// contexts
+
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
 builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Sql")));
 
+// repositories
+
 builder.Services.AddScoped<AddressRepository>();
+builder.Services.AddScoped<ContactFormRepository>();
+builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<ProductTagRepository>();
+builder.Services.AddScoped<TagRepository>();
 builder.Services.AddScoped<UserAddressRepository>();
 
-builder.Services.AddScoped<AuthenticationService>();
-builder.Services.AddScoped<ShowcaseService>();
-builder.Services.AddScoped<DiscoverService>();
-builder.Services.AddScoped<UserService>();
-builder.Services.AddScoped<ProductService>();
+// services
+
+
 builder.Services.AddScoped<AddressService>();
+builder.Services.AddScoped<AuthenticationService>();
+builder.Services.AddScoped<DiscoverService>();
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ShowcaseService>();
+builder.Services.AddScoped<UserAdminService>();
+builder.Services.AddScoped<UserService>();
 
 builder.Services.AddScoped<CustomClaimsPrincipalFactory>();
 
