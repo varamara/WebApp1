@@ -33,7 +33,18 @@
                     <textarea asp-for="ProductCategoryId " class="form-control"></textarea>
                     <small><span asp-validation-for="ProductCategoryId " class="text-danger"></span></small>
                 </div>
-               
+
+                <div class="mb-3">
+                    <label asp-for="Tags"></label>
+                    <select asp-for="Tags" class="form-control" multiple>
+                        @foreach (var tag in Model.Tags)
+                        {
+                            <option value="@tag.Id">@tag.TagName</option>
+                        }
+                    </select>
+                    <small><span asp-validation-for="Tags" class="text-danger"></span></small>
+                </div>
+
                 <div class="mb-3 form-group">
                     <label asp-for="ProductImage"></label>
                     <input type="file" asp-for="ProductImage" class="form-control-file">
