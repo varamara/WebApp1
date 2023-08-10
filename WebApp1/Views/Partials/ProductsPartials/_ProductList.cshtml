@@ -24,12 +24,11 @@ Hur gör man så att det bara syns 10 produkter och att load more laddar fler?*@
 
                 <!-- category-item start -->
                 <div class="grid-categories">
-                    <div class="category">Id</div>
-                    <div class="category">Name</div>
                     <div class="category">ArticleNumber</div>
+                    <div class="category">Product Name</div>
                     <div class="category">Price</div>
                     <div class="category">Category</div>
-                    <div class="category">In stock</div>
+                    <div class="category">Tags</div>
                 </div>
                 <!-- category-item end -->
 
@@ -39,8 +38,10 @@ Hur gör man så att det bara syns 10 produkter och att load more laddar fler?*@
                         <div class="grid-item">
                             <div class="info">@product.ArticleNumber</div>
                             <div class="info">@product.ProductName</div>
-                            <div class="info">@product.ProductDescription</div>
                             <div class="info">@product.ProductPrice</div>
+                            <div class="info">@product.ProductCategory</div>
+                            <div class="info">@product.Tags</div>
+                            
                         </div>
                     }
                 <!-- collection-item end -->

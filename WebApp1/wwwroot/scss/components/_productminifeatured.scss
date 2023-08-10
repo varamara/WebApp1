@@ -1,0 +1,44 @@
+@import '../core/_colors.scss';
+@import '../core/_fonts.scss';
+@import'../core/_mixins.scss';
+
+.mini-featured {
+    background-color: $color-theme-4;
+
+    .container {
+        width: auto;
+        height: 400px;
+        padding-top: 30px;
+
+        @include lg {
+            height: auto;
+            padding-top: 70px;
+        }
+
+        .collection-grid {
+            margin-left: 50px;
+            width: 355px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+
+            @include md {
+                margin-left: -50px;
+                height: 200px;
+                width: 800px;
+                padding-top: 5px;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+            }
+
+            @include lg {
+                margin-left: 57px;
+                width: 1180px;
+                grid-template-columns: repeat(6, 1fr);
+                grid-column-gap: 20px;
+            }
+        }
+    }
+}

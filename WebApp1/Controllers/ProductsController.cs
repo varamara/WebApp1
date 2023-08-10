@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApp1.Models.Schemas;
 using WebApp1.Services;
+using WebApp1.ViewModels;
 
 namespace WebApp1.Controllers
 {
@@ -47,7 +48,7 @@ namespace WebApp1.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ProductSchema schema)
+        public async Task<IActionResult> Register(ProductSchema schema)
         {
             if (ModelState.IsValid)
             {
@@ -70,6 +71,19 @@ namespace WebApp1.Controllers
         public IActionResult Search()
         {
             ViewData["Title"] = "Search for Products";
+            return View();
+        }
+
+        public IActionResult Details(int Id)
+        {
+            //var viewModel = new ProductDetailsViewModel
+            //{
+            //    ProductDetails = new ProductDetailsViewModel
+            //    {
+
+            //    }
+            //};
+
             return View();
         }
     }
