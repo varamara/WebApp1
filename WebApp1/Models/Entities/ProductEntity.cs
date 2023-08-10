@@ -15,9 +15,11 @@ public class ProductEntity
     [Column(TypeName = "money")]
     public decimal ProductPrice { get; set; }
     public int ProductCategoryId { get; set; }
-    public string? ProductImage { get; set; }
+    
     public ProductCategoryEntity ProductCategory { get; set; } = null!;
     public ICollection<ProductTagEntity> ProductTags { get; set; } = new HashSet<ProductTagEntity>();
+    public string? ProductImage { get; set; }
+
 
     public static implicit operator Product(ProductEntity entity)
     {
@@ -30,9 +32,11 @@ public class ProductEntity
                 ProductDescription = entity.ProductDescription,
                 ProductPrice = entity.ProductPrice,
                 ProductCategory = entity.ProductCategory
+
             };
         }
 
         return null!;
     }
 }
+

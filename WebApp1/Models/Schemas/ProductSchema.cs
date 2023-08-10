@@ -10,8 +10,9 @@ namespace WebApp1.Models.Schemas
         public string? ProductDescription { get; set; }
         public decimal ProductPrice { get; set; }
         public int ProductCategoryId { get; set; }
-        public string? ProductImage { get; set; }
         public List<string> Tags { get; set; } = new List<string>();
+        public string? ProductImage { get; set; }
+        
 
         public static implicit operator ProductEntity(ProductSchema schema)
         {

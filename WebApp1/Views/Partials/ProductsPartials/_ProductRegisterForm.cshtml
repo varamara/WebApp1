@@ -1,4 +1,6 @@
-﻿@model ProductRegistrationViewModel
+﻿@using WebApp1.Models.Dtos;
+@using WebApp1.Models.Entities;
+@model ProductRegistrationViewModel
 
 
 <section class="product-register-form">
@@ -36,14 +38,11 @@
 
                 <div class="mb-3">
                     <label asp-for="Tags"></label>
-                    <select asp-for="Tags" class="form-control" multiple>
-                        @foreach (var tag in Model.Tags)
-                        {
-                            <option value="@tag.Id">@tag.TagName</option>
-                        }
+                    <select asp-for="Tags" class="form-control" asp-items="@(new SelectList(Model.Tags, "Id", "TagName"))" multiple>
                     </select>
                     <small><span asp-validation-for="Tags" class="text-danger"></span></small>
                 </div>
+
 
                 <div class="mb-3 form-group">
                     <label asp-for="ProductImage"></label>

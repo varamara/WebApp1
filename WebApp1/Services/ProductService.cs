@@ -1,11 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebApp1.Contexts;
-using WebApp1.Models;
-using WebApp1.Models.Dtos;
+﻿using WebApp1.Models.Dtos;
 using WebApp1.Models.Entities;
 using WebApp1.Models.Schemas;
 using WebApp1.Repositories;
-using WebApp1.ViewModels;
 
 namespace WebApp1.Services;
 public class ProductService

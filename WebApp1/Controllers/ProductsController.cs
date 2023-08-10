@@ -1,19 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApp1.Models.Dtos;
-using WebApp1.Models.Entities;
 using WebApp1.Models.Schemas;
 using WebApp1.Services;
-using WebApp1.ViewModels;
 
 namespace WebApp1.Controllers
 {
     public class ProductsController : Controller
     {
         private readonly ProductService _productService;
+        private readonly TagService _tagService;
 
-        public ProductsController(ProductService productService)
+        public ProductsController(ProductService productService, TagService tagService)
         {
             _productService = productService;
+            _tagService = tagService;
         }
 
         public IActionResult Index()
