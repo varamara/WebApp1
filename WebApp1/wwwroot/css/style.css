@@ -1030,28 +1030,30 @@ footer .container {
   }
 }
 .contact-form .container {
-  border: 0px solid #E1E1E1;
   padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 @media (min-width: 768px) {
   .contact-form .container {
-    border: 1px solid #E1E1E1;
+    border: none;
   }
 }
 .contact-form .title {
+  width: 100px;
   margin-bottom: 40px;
+  border-bottom: 1px solid #E1E1E1;
 }
 .contact-form form {
   display: grid;
   column-gap: 30px;
   row-gap: 30px;
   grid-template-columns: 1fr;
-  grid-template-areas: "name" "email" "phoneNumber" "companyName" "message" "terms" "button";
+  grid-template-areas: "name" "email" "mobile" "company" "message" "button";
 }
 @media (min-width: 992px) {
   .contact-form form {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "name email" "phoneNumber companyName" "message message" "terms terms" "button button";
+    grid-template-areas: "name email" "mobile company" "message message" "button button";
   }
 }
 .contact-form form .name {
@@ -1060,15 +1062,11 @@ footer .container {
 .contact-form form .email {
   grid-area: email;
 }
-.contact-form form .phoneNumber {
-  grid-area: phoneNumber;
+.contact-form form .mobile {
+  grid-area: mobile;
 }
-.contact-form form .companyName {
-  grid-area: companyName;
-}
-.contact-form form .terms {
-  grid-area: terms;
-  margin: 10px 0;
+.contact-form form .company {
+  grid-area: company;
 }
 .contact-form form .message {
   grid-area: message;
@@ -1096,7 +1094,7 @@ footer .container {
   margin: 0 auto;
 }
 .login-form .container {
-  border: 1px solid #E1E1E1;
+  margin: 50px;
   padding: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

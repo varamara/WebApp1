@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using WebApp1.Models.Entities;
-using WebApp1.Models.Identity;
 
 namespace WebApp1.ViewModels;
 

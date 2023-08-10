@@ -10,16 +10,18 @@
     }
 
     .container {
-        border: 0px solid $color-dark-5;
         padding: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
         @include md {
-            border: 1px solid $color-dark-5;
+            border: none;
         }
     }
 
     .title {
+        width: 100px;
         margin-bottom: 40px;
+        border-bottom: 1px solid $color-dark-5;
     }
 
     form {
@@ -27,29 +29,32 @@
         column-gap: 30px;
         row-gap: 30px;
         grid-template-columns: 1fr;
-        grid-template-areas:    "name"
-                                "email"
-                                "phoneNumber"
-                                "companyName"
-                                "message"
-                                "terms"
-                                "button";
-        
+        grid-template-areas: "name" "email" "mobile" "company" "message" "button";
+
         @include lg {
             grid-template-columns: 1fr 1fr;
-            grid-template-areas:    "name email"
-                                    "phoneNumber companyName"
-                                    "message message"
-                                    "terms terms"
-                                    "button button";
+            grid-template-areas: "name email" "mobile company" "message message" "button button";
         }
 
-        .name           { grid-area: name; }
-        .email          { grid-area: email; }
-        .phoneNumber    { grid-area: phoneNumber; }
-        .companyName    { grid-area: companyName;}
-        .terms          { grid-area: terms;  margin: 10px 0; }
-        .message        { grid-area: message; }
+        .name {
+            grid-area: name;
+        }
+
+        .email {
+            grid-area: email;
+        }
+
+        .mobile {
+            grid-area: mobile;
+        }
+
+        .company {
+            grid-area: company;
+        }
+
+        .message {
+            grid-area: message;
+        }
 
         textarea {
             height: 100px;

@@ -28,6 +28,7 @@ builder.Services.AddScoped<UserAddressRepository>();
 // services
 builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<AuthenticationService>();
+builder.Services.AddScoped<ContactService>();
 builder.Services.AddScoped<DiscoverService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<TagService>();
