@@ -1,6 +1,6 @@
 ﻿@{
 
-    var products = await productService.GetAllAsync();
+    var products = await productService.GetProductsAsync();
 }
 
 
@@ -41,8 +41,6 @@ Hur gör man så att det bara syns 10 produkter och att load more laddar fler?*@
                             <div class="info">@product.ProductName</div>
                             <div class="info">@product.ProductDescription</div>
                             <div class="info">@product.ProductPrice</div>
-                            <div class="info">@product.ProductCategoryId</div>
-                            <div class="info">@product.ProductImage</div>
                         </div>
                     }
                 <!-- collection-item end -->

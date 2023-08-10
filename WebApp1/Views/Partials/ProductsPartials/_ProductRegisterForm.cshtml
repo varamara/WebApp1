@@ -27,11 +27,17 @@
                     <textarea asp-for="ProductPrice" class="form-control"></textarea>
                     <small><span asp-validation-for="ProductPrice" class="text-danger"></span></small>
                 </div>
+
+                <div class="mb-3">
+                    <label asp-for="ProductCategoryId "></label>
+                    <textarea asp-for="ProductCategoryId " class="form-control"></textarea>
+                    <small><span asp-validation-for="ProductCategoryId " class="text-danger"></span></small>
+                </div>
                
-                <div class="mb-3 ImageUrl form-group">
-                    <label asp-for="ImageUrl"></label>
-                    <input type="file" asp-for="ImageUrl" class="form-control-file">
-                    <small><span asp-validation-for="ImageUrl"></span></small>
+                <div class="mb-3 form-group">
+                    <label asp-for="ProductImage"></label>
+                    <input type="file" asp-for="ProductImage" class="form-control-file">
+                    <small><span asp-validation-for="ProductImage"></span></small>
                 </div>
 
             

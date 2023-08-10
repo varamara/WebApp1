@@ -18,21 +18,24 @@ builder.Services.AddDbContext<IdentityDataContext>(x => x.UseSqlServer(builder.C
 
 builder.Services.AddScoped<AddressRepository>();
 builder.Services.AddScoped<ContactFormRepository>();
+builder.Services.AddScoped<ProductCategoryRepository>();
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<ProductTagRepository>();
 builder.Services.AddScoped<TagRepository>();
 builder.Services.AddScoped<UserAddressRepository>();
 
+
 // services
-
-
 builder.Services.AddScoped<AddressService>();
 builder.Services.AddScoped<AuthenticationService>();
 builder.Services.AddScoped<DiscoverService>();
 builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<TagService>();
+builder.Services.AddScoped<ProductCategoryService>();
 builder.Services.AddScoped<ShowcaseService>();
 builder.Services.AddScoped<UserAdminService>();
 //builder.Services.AddScoped<UserService>();
+
 
 builder.Services.AddScoped<CustomClaimsPrincipalFactory>();
 

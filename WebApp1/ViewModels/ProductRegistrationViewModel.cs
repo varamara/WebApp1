@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using WebApp1.Models.Entities;
+using WebApp1.Models.Schemas;
 
 namespace WebApp1.ViewModels;
 
@@ -24,8 +25,20 @@ public class ProductRegistrationViewModel
     [Display(Name = "Image URL")]
     public string? ProductImage { get; set; }
 
-  
+
 
     public List<TagEntity> AvailableTags { get; set; } = new List<TagEntity>();
     public List<int> SelectedTagIds { get; set; } = new List<int>();
+
+    public static implicit operator ProductSchema(ProductRegistrationViewModel viewModel)
+    {
+        return new ProductSchema
+        {
+            ProductName = viewModel.ProductName,
+            ProductDescription = viewModel.ProductDescription,
+            ProductPrice = viewModel.ProductPrice,
+            ProductCategoryId = viewModel.ProductCategoryId,
+            ProductImage = viewModel.ProductImage,
+        };
+    }
 }

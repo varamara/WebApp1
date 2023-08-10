@@ -104,25 +104,4 @@ public class RegisterViewModel
             City = registerViewModel.City,
         };
     }
-
-    //public static implicit operator UserEntity(RegisterViewModel registerViewModel)
-    //{
-    //    var userEntity = new UserEntity() { Email = registerViewModel.Email };
-    //    userEntity.GenerateSecurepassword(registerViewModel.Password);
-    //    return userEntity;  
-    //}
-
-    //public static implicit operator ProfileEntity(RegisterViewModel registerViewModel)
-    //{
-    //    return new ProfileEntity
-    //    {
-    //        FirstName = registerViewModel.FirstName,
-    //        LastName = registerViewModel.LastName,
-    //        StreetName = registerViewModel.StreetName,
-    //        PostalCode = registerViewModel.PostalCode,
-    //        City = registerViewModel.City,
-    //    };
-    //}
-
-
 }
