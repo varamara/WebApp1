@@ -1,0 +1,136 @@
+@import '../core/_colors.scss';
+@import '../core/_fonts.scss';
+@import'../core/_mixins.scss';
+
+.product-overview {
+    display: flex;
+    flex-direction: column;
+
+    .item-2 {
+        width: 501px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .product-info {
+        margin: 10px 0 0 10px;
+        width: auto;
+
+        h1 {
+            font-weight: $font-weight-medium;
+            font-family: $font-poppins;
+            font-size: 1.25rem;
+        }
+
+        .rating {
+            display: flex;
+            color: #ffb71b;
+
+            i {
+                margin-top: 3px;
+            }
+
+            p {
+                margin-left: 5px;
+                color: $color-dark-3;
+                font-family: $font-roboto;
+                font-size: 15px;
+            }
+        }
+
+        span {
+            display: block;
+            width: 150px;
+            height: 40px;
+            font-weight: $font-weight-bold;
+            font-size: 24px;
+            border-bottom: 1.5px solid $color-dark-4;
+        }
+
+        .cart {
+            display: flex;
+
+            .quantity {
+                margin-top: 15px;
+                display: flex;
+                align-items: center;
+
+                .qty-input {
+                    height: 40px;
+                    width: 50px;
+                    text-align: center;
+                    background-color: $color-white;
+                }
+
+                .minus-btn, .plus-btn {
+                    background-color: $color-white;
+                    display: inline-block;
+                    color: $color-dark-0;
+                    font-size: 16px;
+                    width: 50px;
+                    height: 40px;
+                    border: 1px solid $color-dark-5;
+                    cursor: pointer;
+                }
+
+                .minus-btn:hover, .plus-btn:hover {
+                    background-color: #999;
+                }
+            }
+        }
+
+        .in-stock {
+            margin-top: 35px;
+            display: flex;
+
+            p {
+                margin-left: 45px;
+            }
+
+            .circle {
+                margin-top: 2px;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                display: inline-block;
+            }
+
+            .red {
+                background-color: $color-theme-1;
+            }
+
+            .yellow {
+                background-color: $color-yellow;
+            }
+
+            .green {
+                background-color: $color-green;
+            }
+        }
+
+        @include md {
+            margin-top: 40px;
+            margin-left: -70px;
+            width: 650px;
+        }
+
+        @include lg {
+            margin-top: 1px;
+            margin-left: 50px;
+        }
+    }
+
+    @include md {
+        margin: 30px 80px 0px 135px;
+    }
+
+    @include lg {
+        flex-direction: row;
+    }
+
+    @include xl {
+        padding: 0px 0 60px 0;
+        margin: 70px 375px 0 375px;
+    }
+}

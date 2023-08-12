@@ -6,7 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WebApp1.Migrations
 {
     /// <inheritdoc />
+<<<<<<<< HEAD:WebApp1/Migrations/20230812102428_Init Database.cs
     public partial class InitDatabase : Migration
+========
+    public partial class init : Migration
+>>>>>>>> fe626ac9ee174864dd197494e326f91c4673f827:WebApp1/Migrations/20230809110358_init.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -244,6 +248,7 @@ namespace WebApp1.Migrations
                 name: "Products",
                 columns: table => new
                 {
+<<<<<<<< HEAD:WebApp1/Migrations/20230812102428_Init Database.cs
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -255,6 +260,18 @@ namespace WebApp1.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+========
+                    ArticleNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProductPrice = table.Column<decimal>(type: "money", nullable: false),
+                    ProductCategoryId = table.Column<int>(type: "int", nullable: false),
+                    ProductImage = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.ArticleNumber);
+>>>>>>>> fe626ac9ee174864dd197494e326f91c4673f827:WebApp1/Migrations/20230809110358_init.cs
                     table.ForeignKey(
                         name: "FK_Products_ProductCategories_ProductCategoryId",
                         column: x => x.ProductCategoryId,
@@ -267,17 +284,30 @@ namespace WebApp1.Migrations
                 name: "ProductTags",
                 columns: table => new
                 {
+<<<<<<<< HEAD:WebApp1/Migrations/20230812102428_Init Database.cs
                     ProductId = table.Column<int>(type: "int", nullable: false),
+========
+                    ArticleNumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
+>>>>>>>> fe626ac9ee174864dd197494e326f91c4673f827:WebApp1/Migrations/20230809110358_init.cs
                     TagId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
+<<<<<<<< HEAD:WebApp1/Migrations/20230812102428_Init Database.cs
                     table.PrimaryKey("PK_ProductTags", x => new { x.ProductId, x.TagId });
                     table.ForeignKey(
                         name: "FK_ProductTags_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
+========
+                    table.PrimaryKey("PK_ProductTags", x => new { x.ArticleNumber, x.TagId });
+                    table.ForeignKey(
+                        name: "FK_ProductTags_Products_ArticleNumber",
+                        column: x => x.ArticleNumber,
+                        principalTable: "Products",
+                        principalColumn: "ArticleNumber",
+>>>>>>>> fe626ac9ee174864dd197494e326f91c4673f827:WebApp1/Migrations/20230809110358_init.cs
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ProductTags_Tags_TagId",

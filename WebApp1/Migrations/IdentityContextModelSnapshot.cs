@@ -10,8 +10,8 @@ using WebApp1.Contexts;
 
 namespace WebApp1.Migrations
 {
-    [DbContext(typeof(IdentityContext))]
-    partial class IdentityContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(IdentityDataContext))]
+    partial class IdentityDataContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -188,12 +188,18 @@ namespace WebApp1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Company")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Message")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mobile")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -206,6 +212,7 @@ namespace WebApp1.Migrations
                 });
 
             modelBuilder.Entity("WebApp1.Models.Entities.ProductCategoryEntity", b =>
+<<<<<<<< HEAD:WebApp1/Migrations/IdentityContextModelSnapshot.cs
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -223,6 +230,8 @@ namespace WebApp1.Migrations
                 });
 
             modelBuilder.Entity("WebApp1.Models.Entities.ProductEntity", b =>
+========
+>>>>>>>> fe626ac9ee174864dd197494e326f91c4673f827:WebApp1/Migrations/IdentityDataContextModelSnapshot.cs
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -230,6 +239,7 @@ namespace WebApp1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+<<<<<<<< HEAD:WebApp1/Migrations/IdentityContextModelSnapshot.cs
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -243,14 +253,81 @@ namespace WebApp1.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
+========
+                    b.Property<string>("CategoryName")
+>>>>>>>> fe626ac9ee174864dd197494e326f91c4673f827:WebApp1/Migrations/IdentityDataContextModelSnapshot.cs
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+<<<<<<<< HEAD:WebApp1/Migrations/IdentityContextModelSnapshot.cs
                     b.HasIndex("ProductCategoryId");
 
                     b.ToTable("Products");
+========
+                    b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductEntity", b =>
+                {
+                    b.Property<string>("ArticleNumber")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("ProductCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ProductPrice")
+                        .HasColumnType("money");
+
+                    b.HasKey("ArticleNumber");
+
+                    b.HasIndex("ProductCategoryId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductTagEntity", b =>
+                {
+                    b.Property<string>("ArticleNumber")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ArticleNumber", "TagId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("ProductTags");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.TagEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("TagName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
+>>>>>>>> fe626ac9ee174864dd197494e326f91c4673f827:WebApp1/Migrations/IdentityDataContextModelSnapshot.cs
                 });
 
             modelBuilder.Entity("WebApp1.Models.Entities.UserAddressEntity", b =>
@@ -399,10 +476,28 @@ namespace WebApp1.Migrations
                 });
 
             modelBuilder.Entity("WebApp1.Models.Entities.ProductEntity", b =>
+<<<<<<<< HEAD:WebApp1/Migrations/IdentityContextModelSnapshot.cs
                 {
                     b.HasOne("WebApp1.Models.Entities.ProductCategoryEntity", "ProductCategory")
                         .WithMany("Products")
                         .HasForeignKey("ProductCategoryId")
+========
+                {
+                    b.HasOne("WebApp1.Models.Entities.ProductCategoryEntity", "ProductCategory")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProductCategory");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductTagEntity", b =>
+                {
+                    b.HasOne("WebApp1.Models.Entities.ProductEntity", "Product")
+                        .WithMany("ProductTags")
+                        .HasForeignKey("ArticleNumber")
+>>>>>>>> fe626ac9ee174864dd197494e326f91c4673f827:WebApp1/Migrations/IdentityDataContextModelSnapshot.cs
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -434,6 +529,14 @@ namespace WebApp1.Migrations
                 });
 
             modelBuilder.Entity("WebApp1.Models.Entities.ProductCategoryEntity", b =>
+<<<<<<<< HEAD:WebApp1/Migrations/IdentityContextModelSnapshot.cs
+========
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductEntity", b =>
+>>>>>>>> fe626ac9ee174864dd197494e326f91c4673f827:WebApp1/Migrations/IdentityDataContextModelSnapshot.cs
                 {
                     b.Navigation("Products");
                 });

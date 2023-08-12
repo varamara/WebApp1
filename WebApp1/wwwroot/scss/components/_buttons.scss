@@ -82,6 +82,50 @@
     }
 }
 
+.btn-add-to {
+    cursor: pointer;
+    height: 40px;
+    width: 180px;
+    font-family: $font-roboto;
+    margin-top: 15px;
+    margin-left: 20px;
+    border: 1px solid $color-theme-1;
+    background-color: $color-theme-1;
+    color: $color-white;
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+        border: 1px solid $color-dark-2;
+        background-color: $color-dark-2;
+        color: $color-white;
+    }
+
+    i {
+        margin-left: 10px;
+    }
+}
+
+.btn-wishlist {
+    cursor: pointer;
+    height: 40px;
+    width: 190px;
+    font-family: $font-roboto;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    border: 1px solid $color-dark-5;
+    background-color: $color-white;
+    color: $color-dark-1;
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+        border: 1px solid $color-dark-2;
+        background-color: $color-dark-2;
+        color: $color-white;
+    }
+}
+
 .btn-rounded {
     border-radius: 25px;
 }

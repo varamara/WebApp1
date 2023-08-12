@@ -7,9 +7,9 @@ namespace WebApp1.Repositories
 {
     public abstract class Repository<TEntity> where TEntity : class
     {
-        private readonly IdentityContext _context;
+        private readonly IdentityDataContext _context;
 
-        protected Repository(IdentityContext context)
+        protected Repository(IdentityDataContext context)
         {
             _context = context;
         }
@@ -67,8 +67,7 @@ namespace WebApp1.Repositories
             return null!;
         }
 
-
-        //Get all from a certain category for example
+        //Get all from a certain category
         public virtual async Task<IEnumerable<TEntity>> GetAllWhereAsync(Expression<Func<TEntity, bool>> expression)
         {
             return await _context.Set<TEntity>().Where(expression).ToListAsync();
@@ -82,9 +81,7 @@ namespace WebApp1.Repositories
                 _context.Set<TEntity>().Remove(entity);
                 await _context.SaveChangesAsync();
                 return true;
-            } catch { };
-
-            return false;
+            } catch { return false; }
         }
     }
 }
