@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApp1.Contexts;
 
 #nullable disable
 
-namespace WebApp1.Migrations.Identity
+namespace WebApp1.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20230808081108_Updated products database")]
-    partial class Updatedproductsdatabase
+    partial class IdentityContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -183,6 +180,48 @@ namespace WebApp1.Migrations.Identity
                     b.ToTable("AspNetAddresses");
                 });
 
+            modelBuilder.Entity("WebApp1.Models.Entities.ContactFormEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContactForms");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductCategoryEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductCategories");
+                });
+
             modelBuilder.Entity("WebApp1.Models.Entities.ProductEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -200,62 +239,18 @@ namespace WebApp1.Migrations.Identity
                     b.Property<decimal>("Price")
                         .HasColumnType("money");
 
+                    b.Property<int>("ProductCategoryId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ProductCategoryId");
+
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("WebApp1.Models.Entities.ProductTagEntity", b =>
-                {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TagId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductId", "TagId");
-
-                    b.HasIndex("TagId");
-
-                    b.ToTable("ProductTags");
-                });
-
-            modelBuilder.Entity("WebApp1.Models.Entities.TagEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("TagName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tags");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            TagName = "new"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            TagName = "Featured"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            TagName = "Popular"
-                        });
                 });
 
             modelBuilder.Entity("WebApp1.Models.Entities.UserAddressEntity", b =>
@@ -403,23 +398,15 @@ namespace WebApp1.Migrations.Identity
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WebApp1.Models.Entities.ProductTagEntity", b =>
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductEntity", b =>
                 {
-                    b.HasOne("WebApp1.Models.Entities.ProductEntity", "Product")
-                        .WithMany("ProductTags")
-                        .HasForeignKey("ProductId")
+                    b.HasOne("WebApp1.Models.Entities.ProductCategoryEntity", "ProductCategory")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApp1.Models.Entities.TagEntity", "Tag")
-                        .WithMany("ProductTags")
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Tag");
+                    b.Navigation("ProductCategory");
                 });
 
             modelBuilder.Entity("WebApp1.Models.Entities.UserAddressEntity", b =>
@@ -446,14 +433,9 @@ namespace WebApp1.Migrations.Identity
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("WebApp1.Models.Entities.ProductEntity", b =>
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductCategoryEntity", b =>
                 {
-                    b.Navigation("ProductTags");
-                });
-
-            modelBuilder.Entity("WebApp1.Models.Entities.TagEntity", b =>
-                {
-                    b.Navigation("ProductTags");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("WebApp1.Models.Identity.AppUser", b =>

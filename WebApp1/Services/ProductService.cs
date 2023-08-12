@@ -14,23 +14,7 @@ public class ProductService
         _context = context;
     }
 
-    public ProductEntity ToProductEntity(ProductRegistrationViewModel viewModel)
-    {
-        return new ProductEntity
-        {
-            Title = viewModel.Title,
-            Description = viewModel.Description,
-            ImageUrl = viewModel.ImageUrl,
-            Price = viewModel.Price,
-            ProductTags = viewModel.SelectedTagIds.Select(tagId => new ProductTagEntity { TagId = tagId }).ToList()
-        };
-    }
-
-    public List<TagEntity> GetAvailableTags()
-    {
-        return _context.Tags.ToList();
-    }
-
+  
     public async Task<bool> RegisterProductAsync(ProductEntity productEntity)
     {
         _context.Products.Add(productEntity);

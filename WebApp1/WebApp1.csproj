@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Contexts\DataContext.cs" />
+    <Compile Remove="Models\Entities\ProductTagEntity.cs" />
+    <Compile Remove="Models\Entities\TagEntity.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="compilerconfig.json" />
   </ItemGroup>
 

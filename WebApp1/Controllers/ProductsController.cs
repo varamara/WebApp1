@@ -29,20 +29,10 @@ namespace WebApp1.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(ProductRegistrationViewModel productRegistrationViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                ProductEntity productEntity = _productService.ToProductEntity(productRegistrationViewModel);
-
-                if (await _productService.RegisterProductAsync(productEntity))
-                    return RedirectToAction("Index", "Products");
-
-                ModelState.AddModelError("", "Something went wrong when creating product");
-            }
-
-            return View(productRegistrationViewModel);
+            return View();
         }
 
-        //Hur får jag produkten att bli tilldelad ett tagId?!
+   
 
         public IActionResult Search()
         {

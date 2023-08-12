@@ -9,11 +9,11 @@ using WebApp1.Contexts;
 
 #nullable disable
 
-namespace WebApp1.Migrations.Identity
+namespace WebApp1.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20230806164851_Seed Data")]
-    partial class SeedData
+    [Migration("20230812102428_Init Database")]
+    partial class InitDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,14 +50,6 @@ namespace WebApp1.Migrations.Identity
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "d01734b4-4c7f-47b7-b83a-d24aa824418f",
-                            Name = "System Administrator",
-                            NormalizedName = "SYSTEM ADMINISTRATOR"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -145,13 +137,6 @@ namespace WebApp1.Migrations.Identity
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "0d7da673-8fcd-470e-b502-c1a54fe38cf5",
-                            RoleId = "d01734b4-4c7f-47b7-b83a-d24aa824418f"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -196,6 +181,111 @@ namespace WebApp1.Migrations.Identity
                     b.HasKey("Id");
 
                     b.ToTable("AspNetAddresses");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ContactFormEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContactForms");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductCategoryEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("money");
+
+                    b.Property<int>("ProductCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductCategoryId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductTagEntity", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "TagId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("ProductTags");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.TagEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("TagName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tags");
                 });
 
             modelBuilder.Entity("WebApp1.Models.Entities.UserAddressEntity", b =>
@@ -290,24 +380,6 @@ namespace WebApp1.Migrations.Identity
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "0d7da673-8fcd-470e-b502-c1a54fe38cf5",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "173a2ca5-3bc1-485f-b665-a502f79ffe75",
-                            Email = "administrator@domain.com",
-                            EmailConfirmed = false,
-                            FirstName = "",
-                            LastName = "",
-                            LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGP5ljAkEnz4j3l+qgTTmUpISJMJN+BHayWumcGGbTuRTr4CogO+NwusuOetmy5p2Q==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "803448c8-2063-47e0-81f5-42d2b272a6ad",
-                            TwoFactorEnabled = false,
-                            UserName = "administrator@domain.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -361,6 +433,36 @@ namespace WebApp1.Migrations.Identity
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductEntity", b =>
+                {
+                    b.HasOne("WebApp1.Models.Entities.ProductCategoryEntity", "ProductCategory")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProductCategory");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductTagEntity", b =>
+                {
+                    b.HasOne("WebApp1.Models.Entities.ProductEntity", "Product")
+                        .WithMany("ProductTags")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApp1.Models.Entities.TagEntity", "Tag")
+                        .WithMany("ProductTags")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Tag");
+                });
+
             modelBuilder.Entity("WebApp1.Models.Entities.UserAddressEntity", b =>
                 {
                     b.HasOne("WebApp1.Models.Entities.AddressEntity", "Address")
@@ -383,6 +485,21 @@ namespace WebApp1.Migrations.Identity
             modelBuilder.Entity("WebApp1.Models.Entities.AddressEntity", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductCategoryEntity", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.ProductEntity", b =>
+                {
+                    b.Navigation("ProductTags");
+                });
+
+            modelBuilder.Entity("WebApp1.Models.Entities.TagEntity", b =>
+                {
+                    b.Navigation("ProductTags");
                 });
 
             modelBuilder.Entity("WebApp1.Models.Identity.AppUser", b =>

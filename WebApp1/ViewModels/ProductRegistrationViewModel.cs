@@ -21,6 +21,10 @@ public class ProductRegistrationViewModel
     [DataType(DataType.Currency)]
     public decimal Price { get; set; }
 
-    public List<TagEntity> AvailableTags { get; set; } = new List<TagEntity>();
-    public List<int> SelectedTagIds { get; set; } = new List<int>();
+    [Required(ErrorMessage = "This field is required")]
+    [Display(Name = "Category *")]
+    public int SelectedCategoryId { get; set; }  // Används för att lagra vald kategori-ID
+
+    public List<ProductCategoryEntity> Categories { get; set; } // Lista med tillgängliga kategorier
+
 }
