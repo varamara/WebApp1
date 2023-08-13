@@ -21,7 +21,7 @@ namespace WebApp1.Services
             _context.ContactForms.Add(contactEntity);
             await _context.SaveChangesAsync();
 
-            return true; // Meddelandet sparades
+            return true;
         }
     }
 }

@@ -22,8 +22,8 @@ namespace WebApp1.ViewModels
 
         [Required(ErrorMessage = "This field is required")]
         [Display(Name = "Category *")]
-        public int SelectedCategoryId { get; set; }  // Används för att lagra vald kategori-ID
+        public int SelectedCategoryId { get; set; }
 
-        public List<CategoryViewModel>? Categories { get; set; } // Lista med tillgängliga kategorier
+        public List<CategoryViewModel>? Categories { get; set; }
     }
 }

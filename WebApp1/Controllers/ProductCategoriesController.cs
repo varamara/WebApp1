@@ -19,7 +19,7 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var categoryName = categoryEntity.CategoryName; // Antag att din entitet har ett CategoryName-fält
+                var categoryName = categoryEntity.CategoryName; 
                 var category = await _productCategoryService.GetProductCategoryAsync(categoryName);
                 if (category != null)
                     return Conflict(new { category, error = "A category with the same name already exists." });

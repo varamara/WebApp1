@@ -26,10 +26,8 @@ namespace WebApp1.Controllers
             if (ModelState.IsValid)
             {
                 await _contactService.RegisterMessageAsync(viewModel);
-                return RedirectToAction("Index", "Home"); // Ersätt med önskad vy efter registrering
+                return RedirectToAction("Index", "Home"); 
             }
-
-            // Om modellens validering misslyckades, visa formuläret igen med felmeddelanden
             return View(viewModel);
         }
     }

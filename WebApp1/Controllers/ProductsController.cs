@@ -58,14 +58,11 @@ namespace WebApp1.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Anropa ProductService för att skapa produkten med uppgifterna från viewModel
                 await _productService.CreateProductAsync(viewModel.ProductName, viewModel.ProductDescription, viewModel.ProductImage, viewModel.ProductPrice, viewModel.SelectedCategoryId);
 
-                // Redirect till en annan sida efter att produkten har skapats
                 return RedirectToAction("Index");
             }
 
-            // Om det finns valideringsfel, fyll på kategorilistan igen och returnera vyn med felmeddelanden
             var categories = await _productCategoryService.GetProductCategoriesAsync();
 
             viewModel.Categories = categories.Select(c => new CategoryViewModel { Id = c.Id, CategoryName = c.CategoryName }).ToList();

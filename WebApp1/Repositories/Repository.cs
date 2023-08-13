@@ -14,7 +14,6 @@ namespace WebApp1.Repositories
             _context = context;
         }
 
-        //Create
         public virtual async Task<TEntity> AddAsync(TEntity entity)
         {
             try
@@ -27,7 +26,6 @@ namespace WebApp1.Repositories
             return null!;
         }
 
-        //Update
         public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {
             try
@@ -41,7 +39,6 @@ namespace WebApp1.Repositories
             return null!;
         }
 
-        //Get one
         public virtual async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> expression)
         {
             try
@@ -54,7 +51,6 @@ namespace WebApp1.Repositories
             return null!;
         }
 
-        //Get a list of
         public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             try
@@ -67,13 +63,11 @@ namespace WebApp1.Repositories
             return null!;
         }
 
-        //Get all from a certain category
         public virtual async Task<IEnumerable<TEntity>> GetAllWhereAsync(Expression<Func<TEntity, bool>> expression)
         {
             return await _context.Set<TEntity>().Where(expression).ToListAsync();
         }
 
-        //Delete
         public virtual async Task<bool> DeleteAsync(TEntity entity)
         {
             try
