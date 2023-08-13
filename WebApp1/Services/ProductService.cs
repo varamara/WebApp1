@@ -1,44 +1,56 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebApp1.Contexts;
-using WebApp1.Models;
-using WebApp1.Models.Entities;
-using WebApp1.ViewModels;
+﻿using WebApp1.Models.Entities;
+using WebApp1.Repositories;
 
-namespace WebApp1.Services;
-
-public class ProductService
+namespace WebApp1.Services
 {
-    private readonly IdentityContext _context;
-    public ProductService(IdentityContext context)
+    public class ProductService
     {
-        _context = context;
-    }
+        private readonly ProductRepository _productRepo;
 
-  
-    public async Task<bool> RegisterProductAsync(ProductEntity productEntity)
-    {
-        _context.Products.Add(productEntity);
-        int result = await _context.SaveChangesAsync();
-        return result > 0;
-    }
-
-
-    //Get Product
-    public async Task<IEnumerable<ProductEntity>> GetAllAsync()
-    {
-        var productEntity = new List<ProductEntity>();
-        var items = await _context.Products.ToListAsync();
-
-        foreach (var item in items)
+        public ProductService(ProductRepository productRepo)
         {
-            ProductEntity productModel = item;
-            productEntity.Add(productModel);
+            _productRepo = productRepo;
         }
-        return productEntity;
-    }
 
-    internal static object GetProductById(int id)
-    {
-        throw new NotImplementedException();
+        public async Task<ProductEntity> CreateProductAsync(string productName, string? productDescription, string? productImage, decimal productPrice, int categoryId)
+        {
+            var entity = new ProductEntity
+            {
+                ProductName = productName,
+                ProductDescription = productDescription,
+                ProductImage = productImage,
+                ProductPrice = productPrice,
+                ProductCategoryId = categoryId
+            };
+
+            var result = await _productRepo.AddAsync(entity);
+            return result;
+        }
+
+
+        public async Task<ProductEntity> GetProductAsync(int productId)
+        {
+            return await _productRepo.GetAsync(x => x.Id == productId);
+        }
+
+        public async Task<IEnumerable<ProductEntity>> GetProductsAsync()
+        {
+            return await _productRepo.GetAllAsync();
+        }
+
+        public async Task<IEnumerable<ProductEntity>> GetProductsByCategoryAsync(int categoryId)
+        {
+            return await _productRepo.GetAllWhereAsync(x => x.ProductCategoryId == categoryId);
+        }
+
+        public async Task<bool> DeleteProductAsync(int productId)
+        {
+            var product = await _productRepo.GetAsync(x => x.Id == productId);
+            if (product != null)
+            {
+                return await _productRepo.DeleteAsync(product);
+            }
+            return false;
+        }
     }
 }

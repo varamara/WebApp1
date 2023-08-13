@@ -7,9 +7,9 @@ namespace WebApp1.Services
 {
     public class ContactService
     {
-        private readonly IdentityDataContext _context;
+        private readonly IdentityContext _context;
 
-        public ContactService(IdentityDataContext context)
+        public ContactService(IdentityContext context)
         {
             _context = context;
         }

@@ -7,9 +7,9 @@ namespace WebApp1.Repositories
 {
     public class ProductRepository : Repository<ProductEntity>
     {
-        private readonly IdentityDataContext _context;
+        private readonly IdentityContext _context;
 
-        public ProductRepository(IdentityDataContext context) : base(context)
+        public ProductRepository(IdentityContext context) : base(context)
         {
             _context = context;
         }
@@ -18,8 +18,6 @@ namespace WebApp1.Repositories
         {
             var entity = await _context.Products
                 .Include(x => x.ProductCategory)
-                .Include(x => x.ProductTags)
-                .ThenInclude(x => x.Tag)
                 .FirstOrDefaultAsync(expression);
             if (entity != null)
                 return entity!;
@@ -31,8 +29,6 @@ namespace WebApp1.Repositories
         {
             return await _context.Products
                 .Include(x => x.ProductCategory)
-                .Include(x => x.ProductTags)
-                .ThenInclude(x => x.Tag)
                 .ToListAsync();
         }
     }

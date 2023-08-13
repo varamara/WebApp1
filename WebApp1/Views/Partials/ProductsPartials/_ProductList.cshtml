@@ -1,17 +1,16 @@
-﻿@{
+﻿@model ProductRegistrationViewModel
+
+@{
 
     var products = await productService.GetProductsAsync();
 }
 
-
-
-@*Behövs det en if sats runt hela?
-Hur gör man så att det bara syns 10 produkter och att load more laddar fler?*@
-
+@{
+    ViewData["Title"] = "Products";
+}
 
 @if (products != null)
 {
-
     <section class="products">
         <div class="container">
             <nav class="header">
@@ -24,35 +23,26 @@ Hur gör man så att det bara syns 10 produkter och att load more laddar fler?*@
 
                 <!-- category-item start -->
                 <div class="grid-categories">
-                    <div class="category">ArticleNumber</div>
-                    <div class="category">Product Name</div>
+                    <div class="category">Product Title</div>
+                    <div class="category">Description</div>
                     <div class="category">Price</div>
                     <div class="category">Category</div>
-                    <div class="category">Tags</div>
                 </div>
                 <!-- category-item end -->
 
                 <!-- collection-item start -->
-                    @foreach (var product in products)
-                    {
-                        <div class="grid-item">
-                            <div class="info">@product.ArticleNumber</div>
-                            <div class="info">@product.ProductName</div>
-                            <div class="info">@product.ProductPrice</div>
-                            <div class="info">@product.ProductCategory</div>
-                            <div class="info">@product.Tags</div>
-                            
-                        </div>
-                    }
+                @foreach (var product in products)
+                {
+                    <div class="grid-item">
+                        <div class="info">@product.ProductName</div>
+                        <div class="info">@product.ProductDescription</div>
+                        <div class="info">@product.ProductPrice</div>
+                        <div class="info">@product.ProductCategoryId</div>
+                    </div>
+                }
                 <!-- collection-item end -->
-
-
-                <div class="load-more">
-                    <button class="btn-outline-white">LOAD MORE <i class="fa-solid fa-rotate-right"></i></button>
-                </div>
 
             </div>
         </div>
     </section>
-
 }

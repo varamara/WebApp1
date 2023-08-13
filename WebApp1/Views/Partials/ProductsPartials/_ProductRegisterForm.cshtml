@@ -1,56 +1,45 @@
-﻿@using WebApp1.Models.Dtos;
-@using WebApp1.Models.Entities;
-@model ProductRegistrationViewModel
-
+﻿@model ProductRegistrationViewModel
 
 <section class="product-register-form">
     <div class="d-flex justify-content-center">
         <div class="col-6">
 
-            <form method="post" enctype="multipart/form-data" novalidate>
+            <form method="post" enctype="multipart/form-data" novalidate asp-action="Register">
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="mb-3">
                     <label asp-for="ProductName"></label>
-                    <input asp-for="ProductName" class="form-control" rows="2" />
+                    <input asp-for="ProductName" class="form-control" />
                     <small><span asp-validation-for="ProductName" class="text-danger"></span></small>
                 </div>
 
-
                 <div class="mb-3">
                     <label asp-for="ProductDescription"></label>
-                    <input asp-for="ProductDescription" class="form-control" rows="4" />
-                    <small><span asp-validation-for="ProductDescription"></span></small>
+                    <input asp-for="ProductDescription" class="form-control" />
+                    <small><span asp-validation-for="ProductDescription" class="text-danger"></span></small>
                 </div>
 
                 <div class="mb-3">
                     <label asp-for="ProductPrice"></label>
-                    <textarea asp-for="ProductPrice" class="form-control"></textarea>
+                    <input asp-for="ProductPrice" class="form-control" />
                     <small><span asp-validation-for="ProductPrice" class="text-danger"></span></small>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="ProductCategoryId "></label>
-                    <textarea asp-for="ProductCategoryId " class="form-control"></textarea>
-                    <small><span asp-validation-for="ProductCategoryId " class="text-danger"></span></small>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="Tags"></label>
-                    <select asp-for="Tags" class="form-control" asp-items="@(new SelectList(Model.Tags, "Id", "TagName"))" multiple>
+                    <label asp-for="SelectedCategoryId"></label>
+                    <select asp-for="SelectedCategoryId" asp-items="@(new SelectList(Model.Categories, "Id", "CategoryName"))">
+                        <option value="">-- Select Category --</option>
                     </select>
-                    <small><span asp-validation-for="Tags" class="text-danger"></span></small>
+                    <small><span asp-validation-for="SelectedCategoryId" class="text-danger"></span></small>
                 </div>
 
 
                 <div class="mb-3 form-group">
                     <label asp-for="ProductImage"></label>
                     <input type="file" asp-for="ProductImage" class="form-control-file">
-                    <small><span asp-validation-for="ProductImage"></span></small>
+                    <small><span asp-validation-for="ProductImage" class="text-danger"></span></small>
                 </div>
-
-            
 
                 <div class="grid mt-2">
                     <button type="submit" class="btn btn-success">CREATE</button>

@@ -7,9 +7,9 @@ namespace WebApp1.Repositories
 {
     public abstract class Repository<TEntity> where TEntity : class
     {
-        private readonly IdentityDataContext _context;
+        private readonly IdentityContext _context;
 
-        protected Repository(IdentityDataContext context)
+        protected Repository(IdentityContext context)
         {
             _context = context;
         }
