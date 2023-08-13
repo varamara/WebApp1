@@ -26,6 +26,23 @@ namespace WebApp1.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var product = await _productService.GetProductAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            var productOverviewModel = ProductOverviewModel.FromProductEntity(product);
+
+            return View(productOverviewModel);
+        }
+
+
+
         public IActionResult Register()
         {
             var categories = _productCategoryService.GetProductCategoriesAsync().Result;

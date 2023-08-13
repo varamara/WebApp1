@@ -22,8 +22,6 @@ public class IdentityContext : IdentityDbContext<AppUser>
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Konfigurera dina entiteter här
-
         modelBuilder.Entity<ProductCategoryEntity>().HasData(
             new ProductCategoryEntity { Id = 1, CategoryName = "new" },
             new ProductCategoryEntity { Id = 2, CategoryName = "popular" },
@@ -37,8 +35,6 @@ public class IdentityContext : IdentityDbContext<AppUser>
             .Property(p => p.ProductName)
             .IsRequired();
 
-        // ... andra konfigurationer för ProductEntity
-
         modelBuilder.Entity<ProductCategoryEntity>()
             .HasKey(c => c.Id);
 
@@ -46,14 +42,11 @@ public class IdentityContext : IdentityDbContext<AppUser>
             .Property(c => c.CategoryName)
             .IsRequired();
 
-        // Konfigurera relationen mellan ProductEntity och ProductCategoryEntity
         modelBuilder.Entity<ProductEntity>()
             .HasOne(p => p.ProductCategory)
             .WithMany(c => c.Products)
             .HasForeignKey(p => p.ProductCategoryId)
-            .OnDelete(DeleteBehavior.Restrict); // eller .Cascade om du vill att en kategori raderas om produkten raderas
-
-        // ... andra konfigurationer för ProductCategoryEntity
+            .OnDelete(DeleteBehavior.Restrict); 
 
         base.OnModelCreating(modelBuilder);
     }

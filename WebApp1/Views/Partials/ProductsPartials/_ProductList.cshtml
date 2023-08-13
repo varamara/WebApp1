@@ -34,11 +34,12 @@
                 @foreach (var product in products)
                 {
                     <div class="grid-item">
-                        <div class="info">@product.ProductName</div>
+                        <a asp-action="Details" asp-route-id="@product.Id">@product.ProductName</a>
                         <div class="info">@product.ProductDescription</div>
                         <div class="info">@product.ProductPrice</div>
-                        <div class="info">@product.ProductCategoryId</div>
+                        <div class="info">@product.ProductCategory.CategoryName</div>
                     </div>
+                  
                 }
                 <!-- collection-item end -->
 

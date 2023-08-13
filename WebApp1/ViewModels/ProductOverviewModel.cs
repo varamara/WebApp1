@@ -18,7 +18,7 @@ namespace WebApp1.ViewModels
 				ProductDescription = productEntity.ProductDescription,
 				ProductPrice = productEntity.ProductPrice,
 				ProductImage = productEntity.ProductImage,
-				ProductCategory = productEntity.ProductCategory?.CategoryName // Använd navigationsproperty för att hämta kategorinamnet
+				ProductCategory = productEntity.ProductCategory?.CategoryName
 			};
 		}
 	}
