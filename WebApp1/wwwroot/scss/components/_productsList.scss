@@ -6,28 +6,28 @@
 
 
     .container {
-
-
+        padding: 30px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
         .header {
             margin-top: 50px;
             margin-bottom: 50px;
-            font-family: $font-roboto;
             display: flex;
             justify-content: space-between;
             align-items: center;
 
             .products-title {
-                border-bottom: 1px solid $color-dark-4;
-                margin-left: 20px;
-                font-size: 2rem;
+                font-size: 1.5rem;
                 font-weight: $font-weight-bold;
-                color: $color-dark-1;
+                width: 150px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid $color-dark-5;
             }
 
-            a {
+            .button {
                 color: $color-white;
                 background-color: $color-theme-1;
+                font-family: $font-poppins;
                 padding: 10px;
                 text-decoration: none;
                 transition: all 0.25s ease-in-out;
@@ -44,7 +44,6 @@
 
         .products-grid {
             margin-bottom: 100px;
-            background-color: #f6f6f6;
             display: grid;
             grid-template-columns: repeat(5);
             border: 1px solid $color-dark-5;
@@ -52,30 +51,57 @@
             .grid-categories {
                 background-color: $color-theme-1;
                 color: $color-white;
-                font-family: $font-roboto;
-                font-size: 1.2rem;
                 font-weight: $font-weight-medium;
+                font-family: $font-poppins;
+                border: 1px solid $color-dark-5;
+                font-size: 1.2rem;
                 justify-content: space-evenly;
                 align-items: center;
                 display: flex;
                 height: 50px;
 
-
                 .category {
-                    flex-basis: 7%;
+                    margin: 40px;
+                    flex-basis: 10%;
                 }
             }
 
             .grid-item {
+                width: 100%;
+                border: 1px solid $color-dark-5;
+                margin-right: 50px;
                 display: flex;
                 justify-content: space-evenly;
                 align-items: center;
                 padding-top: 20px;
                 padding-bottom: 20px;
-                border: 1px solid $color-dark-5;
 
-                .info {
-                    flex-basis: 7%;
+                .title {
+                    margin-left: -100px;
+                    font-size: 1.2rem;
+                    color: $color-dark-2;
+                }
+
+                .description-container {
+                    margin-left: -100px;
+                    margin-right: -50px;
+                    max-height: 80px;
+                    max-width: 300px;
+                    overflow-y: scroll;
+
+                    .description {
+                        margin-left: 20px;
+                        overflow: auto;
+                    }
+                }
+
+                .price {
+                    font-size: 1.2rem;
+                }
+
+                .category {
+                    margin-right: -50px;
+                    font-size: 1.2rem;
                 }
             }
 

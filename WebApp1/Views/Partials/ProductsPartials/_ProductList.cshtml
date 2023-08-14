@@ -15,9 +15,9 @@
         <div class="container">
             <nav class="header">
                 <div class="products-title">
-                    PRODUCTS
+                    Products
                 </div>
-                <a asp-controller="Products" asp-action="Register" class="link"><i class="fa-solid fa-plus"></i>CREATE PRODUCT</a>
+                <a asp-controller="Products" asp-action="Register" class="button"><i class="fa-solid fa-plus"></i>Create new product</a>
             </nav>
             <div class="products-grid">
 
@@ -34,12 +34,13 @@
                 @foreach (var product in products)
                 {
                     <div class="grid-item">
-                        <a asp-action="Details" asp-route-id="@product.Id">@product.ProductName</a>
-                        <div class="info">@product.ProductDescription</div>
-                        <div class="info">@product.ProductPrice</div>
-                        <div class="info">@product.ProductCategory.CategoryName</div>
+                        <a class= "title "asp-action="Details" asp-route-id="@product.Id">@product.ProductName</a>
+                        <div class="description-container">
+                            <div class="description">@product.ProductDescription</div>
+                        </div>
+                        <div class="price">@product.ProductPrice</div>
+                        <div class="category">@product.ProductCategory.CategoryName</div>
                     </div>
-                  
                 }
                 <!-- collection-item end -->
 

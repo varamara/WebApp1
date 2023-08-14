@@ -21,5 +21,5 @@ namespace WebApp1.ViewModels
 				ProductCategory = productEntity.ProductCategory?.CategoryName
 			};
 		}
-	}
+    }
 }

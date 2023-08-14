@@ -9,19 +9,37 @@
 
 <section class="admin-profile">
     <div class="container">
-        @foreach (var user in await userAdminService.GetUsersAsync())
-        {
-            <div class="user">
-                <div class="name">@user.FirstName @user.LastName</div>
-                <div class="email">@user.Email</div>
-                <div class="roles">
-                    @foreach (var roleName in user.RoleNames)
-                    {
-                        <span>@roleName</span>
-                    }
-                </div>
+        <nav class="header">
+            <div class="title">
+                Registered Users
             </div>
-        }
+        </nav>
+
+        <div class="user-grid">
+
+            <!-- category-item start -->
+            <div class="grid-categories">
+                <div class="category">Name</div>
+                <div class="category">Email</div>
+                <div class="category">Role</div>
+            </div>
+            <!-- category-item end -->
+
+
+            @foreach (var user in await userAdminService.GetUsersAsync())
+            {
+                <div class="grid-item">
+                    <div class="info">@user.FirstName @user.LastName</div>
+                    <div class="info">@user.Email</div>
+                    <div class="info">
+                        @foreach (var roleName in user.RoleNames)
+                        {
+                            <span>@roleName</span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </section>
 
